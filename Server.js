@@ -9,6 +9,7 @@ const disneydb = require("./schema/disneyschema");
 const pixardb = require("./schema/pixarschema");
 const marveldb = require("./schema/marvelschema");
 const starwardb = require("./schema/starwarschema");
+const cors = require("cors");
 
 const port = process.env.PORT || 5000;
 
@@ -16,16 +17,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-const cors = require("cors");
+// const corsOptions = {
+//   origin: ["https://flimfair-frontend.vercel.app", "http://localhost:3000"],
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+// };
 
-const corsOptions = {
-  origin: ["https://flimfair-frontend.vercel.app", "http://localhost:3000"],
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: "https://flimfair-frontend.vercel.app",
+}));
 
 app.get("/", (req, res)=>{
     res.send("FlimFair Website Server")
@@ -124,7 +125,7 @@ app.post("/user_detail", async(req, res)=>{
     }
 })
 
-app.post("/SignIn", cors(corsOptions) ,async(req, res)=>{
+app.post("/SignIn", async(req, res)=>{
     const inpres = req.body;
     console.log("data received" + inpres);
 
