@@ -348,7 +348,7 @@ app.patch('/deletewish', async(req,res)=>{
     }
 })
 
-app.post('/wishes', async(req,res)=>{
+app.post('/wishes', cors() ,async(req,res)=>{
     try{
         const {wish_array}= req.body;
         console.log(wish_array);
