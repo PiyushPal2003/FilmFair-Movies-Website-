@@ -17,6 +17,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
+app.use(cors())
+
 // const corsOptions = {
 //   origin: ["https://flimfair-frontend.vercel.app", "http://localhost:3000"],
 //   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
