@@ -124,7 +124,7 @@ app.post("/user_detail", async(req, res)=>{
     }
 })
 
-app.post("/SignIn", async(req, res)=>{
+app.post("/SignIn", cors(corsOptions) ,async(req, res)=>{
     const inpres = req.body;
     console.log("data received" + inpres);
 
