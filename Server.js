@@ -26,12 +26,12 @@ app.use(cors())
 //   optionsSuccessStatus: 204,
 // };
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, UPDATE, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'https://flimfair-frontend.vercel.app');
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, UPDATE, DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type');
+//     next();
+// });
 
 // app.use(cors({
 //     origin: "https://flimfair-frontend.vercel.app",
@@ -40,9 +40,9 @@ app.use((req, res, next) => {
 app.get("/", (req, res)=>{
     res.send("FlimFair Website Server")
 });
-// app.get("/trail", (req,res)=>{
-//     res.render("trail")
-// })
+app.get("/trail", (req,res)=>{
+    res.render("trail")
+})
 
 app.get("/movieinfo", async(req,res)=>{
     try{
@@ -385,7 +385,6 @@ app.post('/wishes', async(req,res)=>{
                 res.json("not found");
             }
         }
-        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
         res.json(result).status(200);
 
     } catch(err){
