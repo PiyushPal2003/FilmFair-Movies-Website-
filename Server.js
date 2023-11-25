@@ -40,9 +40,9 @@ app.use((req, res, next) => {
 app.get("/", (req, res)=>{
     res.send("FlimFair Website Server")
 });
-app.get("/trail", (req,res)=>{
-    res.render("trail")
-})
+// app.get("/trail", (req,res)=>{
+//     res.render("trail")
+// })
 
 app.get("/movieinfo", async(req,res)=>{
     try{
