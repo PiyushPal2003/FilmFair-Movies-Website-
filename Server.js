@@ -19,12 +19,6 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(cors())
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
- })
-
 // const corsOptions = {
 //   origin: ["https://flimfair-frontend.vercel.app", "http://localhost:3000"],
 //   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -354,7 +348,7 @@ app.patch('/deletewish', async(req,res)=>{
     }
 })
 
-app.post('/wishes', cors() ,async(req,res)=>{
+app.post('/wishes', async(req,res)=>{
     try{
         const {wish_array}= req.body;
         console.log(wish_array);
