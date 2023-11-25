@@ -385,7 +385,7 @@ app.post('/wishes', async(req,res)=>{
                 res.json("not found");
             }
         }
-        res.header('Access-Control-Allow-Origin', 'https://filmfair.vercel.app');
+        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
         res.json(result).status(200);
 
     } catch(err){
