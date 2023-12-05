@@ -48,7 +48,7 @@ app.post('/checkout', async (req, res) => {
               },
             ],
             mode: 'subscription',
-            success_url: `http://localhost:3000/signin`,
+            success_url: `http://filmfair.vercel.app/signin`,
             cancel_url: `http://filmfair.vercel.app`,
           });
         
