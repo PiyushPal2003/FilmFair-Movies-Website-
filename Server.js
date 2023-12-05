@@ -9,6 +9,7 @@ const disneydb = require("./schema/disneyschema");
 const pixardb = require("./schema/pixarschema");
 const marveldb = require("./schema/marvelschema");
 const starwardb = require("./schema/starwarschema");
+const stripe = require('stripe')('sk_test_51NhUm5SAzab3NSzcO8EhzoxQvpUrePy3QpdLp9qdEETPpOmxhUOaY12AMmdUYJvS8tnrKK3vXZMU5kkdGeuWbQvv00bKksY8g0');
 const cors = require("cors");
 
 const port = process.env.PORT || 5000;
@@ -36,6 +37,29 @@ app.use(cors())
 // app.use(cors({
 //     origin: "https://flimfair-frontend.vercel.app",
 // }));
+app.post('/checkout', async (req, res) => {
+    user = req.body;
+    try{
+        const session = await stripe.checkout.sessions.create({
+            line_items: [
+              {
+                price: 'price_1OJsBfSAzab3NSzcquCNBDJJ',
+                quantity: 1,
+              },
+            ],
+            mode: 'subscription',
+            success_url: `http://localhost:3000/signin`,
+            cancel_url: `http://filmfair.vercel.app`,
+          });
+        
+          res.json({url: session.url})
+    } catch(err){
+        console.log(err)
+    }
+
+  });
+
+
 
 app.get("/", (req, res)=>{
     res.send("FlimFair Website Server")
